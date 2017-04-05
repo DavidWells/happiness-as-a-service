@@ -1,0 +1,62 @@
+
+service: happiness-service
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+functions:
+  # Private function
+  hello:
+    handler: handler.hello
+  # Serving JSON
+  helloInternet:
+    handler: handler.helloInternet
+    events:
+      - http:
+          path: oh-hai
+          method: get
+  # Serving HTML
+  helloInternetHTML:
+    handler: handler.helloInternetHTML
+    events:
+      - http:
+          path: oh-hai-html
+          method: get
+  # Alexa is my friend
+  alexaFriendCheck:
+    handler: handler.alexaFriendCheck
+    events:
+      - alexaSkill
+  # scrape
+  scrape:
+    handler: handler.cuteScraper
+    events:
+      - http:
+          path: scrape
+          method: get
+  # Cron job
+  textMeNiceThings:
+    handler: functions/text-me-nice-things.textMe
+    events:
+      - schedule:
+          rate: rate(1 minute)
+          enabled: false
+    environment:
+      TWILIO_ACCOUNT_SID: ${file(./secrets.json):TWILIO_ACCOUNT_SID}
+      TWILIO_AUTH_TOKEN: ${file(./secrets.json):TWILIO_AUTH_TOKEN}
+      TWILIO_PHONE_NUMBER: ${file(./secrets.json):TWILIO_PHONE_NUMBER}
+      MY_PHONE_NUMBER: ${file(./secrets.json):MY_PHONE_NUMBER}
+  tweetMeNiceThings:
+    handler: functions/tweet-me-nice-things.tweet
+    events:
+      - schedule:
+          rate: rate(1 minute)
+          enabled: false
+    environment:
+      TWITTER_API_KEY: ${file(./secrets.json):TWITTER_API_KEY}
+      TWITTER_API_KEY_SECRET: ${file(./secrets.json):TWITTER_API_KEY_SECRET}
+      TWITTER_ACCESS_TOKEN: ${file(./secrets.json):TWITTER_ACCESS_TOKEN}
+      TWITTER_ACCESS_TOKEN_SECRET: ${file(./secrets.json):TWITTER_ACCESS_TOKEN_SECRET}
+      TWITTER_TIMEOUT_MS: ${file(./secrets.json):TWITTER_TIMEOUT_MS}
+  # React to s3 images https://github.com/johncmckim/serverless-emoticon-faceswap/blob/master/serverless.yml#L38
