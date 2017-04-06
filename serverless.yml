@@ -28,14 +28,7 @@ functions:
     handler: handler.alexaFriendCheck
     events:
       - alexaSkill
-  # scrape
-  scrape:
-    handler: handler.cuteScraper
-    events:
-      - http:
-          path: scrape
-          method: get
-  # Cron job
+  # Send SMS to myself via scheduled cron job
   textMeNiceThings:
     handler: functions/text-me-nice-things.textMe
     events:
@@ -47,6 +40,7 @@ functions:
       TWILIO_AUTH_TOKEN: ${file(./secrets.json):TWILIO_AUTH_TOKEN}
       TWILIO_PHONE_NUMBER: ${file(./secrets.json):TWILIO_PHONE_NUMBER}
       MY_PHONE_NUMBER: ${file(./secrets.json):MY_PHONE_NUMBER}
+  # Send tweets to myself via scheduled cron job
   tweetMeNiceThings:
     handler: functions/tweet-me-nice-things.tweet
     events:
@@ -59,4 +53,12 @@ functions:
       TWITTER_ACCESS_TOKEN: ${file(./secrets.json):TWITTER_ACCESS_TOKEN}
       TWITTER_ACCESS_TOKEN_SECRET: ${file(./secrets.json):TWITTER_ACCESS_TOKEN_SECRET}
       TWITTER_TIMEOUT_MS: ${file(./secrets.json):TWITTER_TIMEOUT_MS}
-  # React to s3 images https://github.com/johncmckim/serverless-emoticon-faceswap/blob/master/serverless.yml#L38
+  # scrape cuteness
+  cuteScraper:
+    handler: handler.cuteScraper
+    events:
+      - http:
+          path: cute-scraper
+          method: get
+  # React to s3 images example https://github.com/johncmckim/serverless-emoticon-faceswap/blob/master/serverless.yml#L38
+  # React to dynamoDB changes example https://github.com/open-bot/open-bot/blob/master/serverless.yml#L42-L50

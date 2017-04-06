@@ -18,11 +18,11 @@ module.exports.alexaFriendCheck = require('./functions/alexa-friend-check')
 module.exports.cuteScraper = require('./functions/cute-scraper')
 
 /*
-Send text messages function isolated because of ENV keys
+Send text messages function isolated because of ENV variables
 ./functions/text-me-nice-things
 */
 
 /*
-Send tweet function isolated because of ENV keys
+Send tweet function isolated because of ENV variables
 ./functions/text-me-nice-things
 */

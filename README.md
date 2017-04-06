@@ -2,6 +2,18 @@
 
 Can true happiness be achieved through technology? I don't know but lets try!
 
+<!-- AUTO-GENERATED-CONTENT:START (TOC) -->
+- [Prerequisites](#prerequisites)
+- [Setup](#setup)
+- [1. CLI Love](#1-cli-love)
+- [2. `GET` Love](#2-get-love)
+- [3. `GET` HTML Love](#3-get-html-love)
+- [4. Speech Love](#4-speech-love)
+- [5. Text Love](#5-text-love)
+- [6. Tweet Love](#6-tweet-love)
+- [7. Cuteness Scraper](#7-cuteness-scraper)
+<!-- AUTO-GENERATED-CONTENT:END -->
+
 ## Prerequisites
 
 Make sure you have the serverless CLI installed on your machine.
@@ -9,6 +21,8 @@ Make sure you have the serverless CLI installed on your machine.
 ```
 npm install serverless -g
 ```
+
+[More info on getting the serverless CLI setup](https://github.com/serverless/serverless#quick-start)
 
 ## Setup
 
@@ -92,3 +106,37 @@ helloInternet:
 More info on the [http event configuration](https://serverless.com/framework/docs/providers/aws/events/apigateway/)
 
 Then we need to deploy our function
+
+```bash
+sls deploy
+```
+
+## 3. `GET` HTML Love
+
+The function `helloInternetHTML` will return us some HTML instead of JSON from lambda.
+
+
+## 4. Speech Love
+
+The `alexaFriendCheck` triggered when a custom alexa skill is run.
+
+For more on custom alexa skills, [checkout the example](https://github.com/serverless/examples/tree/master/aws-node-alexa-skill).
+
+
+# 5. Text Love
+
+The `textMeNiceThings` function leverages the twilio API and runs on a serverless cron job.
+
+It sends me nice messages every minute to keep my spirits high.
+
+# 6. Tweet Love
+
+The `tweetMeNiceThings` function leverages the twitter API and also runs on a serverless cron job.
+
+It tweets me every minute and let's me know nice things about myself.
+
+# 7. Cuteness Scraper
+
+The `cuteScraper` function makes requests out to `cuteoverload.com` and then parses the HTML with the `cheerio` module to return cute images.
+
+This is my favorite 😃
