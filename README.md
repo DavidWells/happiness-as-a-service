@@ -26,17 +26,12 @@ npm install serverless -g
 
 ## Setup
 
-1. Create the directory
+1. Copy `secrets.example.json` to `secrets.json` and insert your API keys for twilio and twitter!
 
-  ```bash
-  mkdir happiness-as-a-service
-  cd happiness-as-a-service
+2. Then deploy the service
+
   ```
-
-2. Create the serverless service
-
-  ```bash
-  sls create --template aws-nodejs --name happiness-service
+  sls deploy
   ```
 
 ## 1. CLI Love
