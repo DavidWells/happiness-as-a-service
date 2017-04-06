@@ -123,19 +123,19 @@ The `alexaFriendCheck` triggered when a custom alexa skill is run.
 For more on custom alexa skills, [checkout the example](https://github.com/serverless/examples/tree/master/aws-node-alexa-skill).
 
 
-# 5. Text Love
+## 5. Text Love
 
 The `textMeNiceThings` function leverages the twilio API and runs on a serverless cron job.
 
 It sends me nice messages every minute to keep my spirits high.
 
-# 6. Tweet Love
+## 6. Tweet Love
 
 The `tweetMeNiceThings` function leverages the twitter API and also runs on a serverless cron job.
 
 It tweets me every minute and let's me know nice things about myself.
 
-# 7. Cuteness Scraper
+## 7. Cuteness Scraper
 
 The `cuteScraper` function makes requests out to `cuteoverload.com` and then parses the HTML with the `cheerio` module to return cute images.
 
